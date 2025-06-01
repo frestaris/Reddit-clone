@@ -13,7 +13,7 @@ body {
 
 /* Header */
 .header {
-  background: #ff4500;
+  background: #0079d3;
   color: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -43,7 +43,7 @@ body {
 
 .search-bar:focus,
 .category-filter:focus {
-  border-color: #ff4500;
+  border-color: 0079d3;
   outline: none;
 }
 
@@ -55,7 +55,6 @@ body {
 }
 
 .post {
-  width: 60%;
   background: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -70,11 +69,12 @@ body {
 }
 
 .post img {
-  max-width: 100%;
+  max-width: 400px;
+  width: 100%;
   height: auto;
   border-radius: 6px;
   margin: 12px 0;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .post p {
