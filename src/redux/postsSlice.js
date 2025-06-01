@@ -17,7 +17,7 @@ const postsSlice = createSlice({
     error: null,
     searchTerm: "",
     category: "",
-    selectedPost: null,
+    votes: {},
   },
   reducers: {
     setSearchTerm: (state, action) => {
@@ -26,11 +26,23 @@ const postsSlice = createSlice({
     setCategory: (state, action) => {
       state.category = action.payload;
     },
-    selectPost: (state, action) => {
-      state.selectedPost = action.payload;
-    },
     clearError: (state) => {
       state.error = null;
+    },
+    toggleVote: (state, action) => {
+      const { postId, vote } = action.payload;
+      const currentVote = state.votes[postId] || 0;
+      if (currentVote === vote) {
+        state.votes[postId] = 0;
+        const post = state.items.find((p) => p.id === postId);
+        if (post) post.ups -= vote;
+      } else {
+        state.votes[postId] = vote;
+        const post = state.items.find((p) => p.id === postId);
+        if (post) {
+          post.ups += vote - currentVote;
+        }
+      }
     },
   },
   extraReducers: (builder) => {
@@ -50,6 +62,6 @@ const postsSlice = createSlice({
   },
 });
 
-export const { setSearchTerm, setCategory, selectPost, clearError } =
+export const { setSearchTerm, setCategory, clearError, toggleVote } =
   postsSlice.actions;
 export default postsSlice.reducer;

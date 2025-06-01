@@ -4,7 +4,6 @@ import { fetchPosts, clearError } from "./redux/postsSlice";
 import PostList from "./components/PostList";
 import SearchBar from "./components/SearchBar";
 import CategoryFilter from "./components/CategoryFilter";
-import PostModal from "./components/PostModal";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +29,6 @@ function App() {
       <main>
         <PostList />
       </main>
-      <PostModal />
     </div>
   );
 }
